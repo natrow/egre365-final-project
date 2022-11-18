@@ -10,97 +10,61 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="800000001fs"></ZoomEndTime>
-      <Cursor1Time time="800000000fs"></Cursor1Time>
+      <ZoomStartTime time="2669025000fs"></ZoomStartTime>
+      <ZoomEndTime time="4266195001fs"></ZoomEndTime>
+      <Cursor1Time time="4000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="114"></NameColumnWidth>
-      <ValueColumnWidth column_width="60"></ValueColumnWidth>
+      <NameColumnWidth column_width="172"></NameColumnWidth>
+      <ValueColumnWidth column_width="78"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="21" />
-   <wvobject type="other" fp_name="/tb_spi_controller/o_data_index">
-      <obj_property name="ElementShortName">o_data_index</obj_property>
-      <obj_property name="ObjectShortName">o_data_index</obj_property>
+   <WVObjectSize size="12" />
+   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/i_clk">
+      <obj_property name="ElementShortName">i_clk</obj_property>
+      <obj_property name="ObjectShortName">i_clk</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/tb_spi_controller/i_data_index">
-      <obj_property name="ElementShortName">i_data_index</obj_property>
-      <obj_property name="ObjectShortName">i_data_index</obj_property>
+   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/i_rstb">
+      <obj_property name="ElementShortName">i_rstb</obj_property>
+      <obj_property name="ObjectShortName">i_rstb</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/tb_spi_controller/send_data_index">
-      <obj_property name="ElementShortName">send_data_index</obj_property>
-      <obj_property name="ObjectShortName">send_data_index</obj_property>
+   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/i_start">
+      <obj_property name="ElementShortName">i_start</obj_property>
+      <obj_property name="ObjectShortName">i_start</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/tb_spi_controller/count_fall">
-      <obj_property name="ElementShortName">count_fall</obj_property>
-      <obj_property name="ObjectShortName">count_fall</obj_property>
+   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/o_tx_start">
+      <obj_property name="ElementShortName">o_tx_start</obj_property>
+      <obj_property name="ObjectShortName">o_tx_start</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/tb_spi_controller/count_rise">
-      <obj_property name="ElementShortName">count_rise</obj_property>
-      <obj_property name="ObjectShortName">count_rise</obj_property>
+   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/o_data_parallel">
+      <obj_property name="ElementShortName">o_data_parallel[15:0]</obj_property>
+      <obj_property name="ObjectShortName">o_data_parallel[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/sys_clk_sig">
-      <obj_property name="ElementShortName">sys_clk_sig</obj_property>
-      <obj_property name="ObjectShortName">sys_clk_sig</obj_property>
+   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/i_tx_end">
+      <obj_property name="ElementShortName">i_tx_end</obj_property>
+      <obj_property name="ObjectShortName">i_tx_end</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/cpu_resetn_sig">
-      <obj_property name="ElementShortName">cpu_resetn_sig</obj_property>
-      <obj_property name="ObjectShortName">cpu_resetn_sig</obj_property>
+   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/i_data_parallel">
+      <obj_property name="ElementShortName">i_data_parallel[15:0]</obj_property>
+      <obj_property name="ObjectShortName">i_data_parallel[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/sck_sig">
-      <obj_property name="ElementShortName">sck_sig</obj_property>
-      <obj_property name="ObjectShortName">sck_sig</obj_property>
+   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/o_xaxis_data">
+      <obj_property name="ElementShortName">o_xaxis_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">o_xaxis_data[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/cs_sig">
-      <obj_property name="ElementShortName">cs_sig</obj_property>
-      <obj_property name="ObjectShortName">cs_sig</obj_property>
+   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/o_yaxis_data">
+      <obj_property name="ElementShortName">o_yaxis_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">o_yaxis_data[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/mosi_sig">
-      <obj_property name="ElementShortName">mosi_sig</obj_property>
-      <obj_property name="ObjectShortName">mosi_sig</obj_property>
+   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/o_zaxis_data">
+      <obj_property name="ElementShortName">o_zaxis_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">o_zaxis_data[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/miso_sig">
-      <obj_property name="ElementShortName">miso_sig</obj_property>
-      <obj_property name="ObjectShortName">miso_sig</obj_property>
+   <wvobject type="other" fp_name="/tb_spi_controller/spi_fsm/present_state">
+      <obj_property name="ElementShortName">present_state</obj_property>
+      <obj_property name="ObjectShortName">present_state</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/tx_start_s">
-      <obj_property name="ElementShortName">tx_start_s</obj_property>
-      <obj_property name="ObjectShortName">tx_start_s</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/tx_end_s">
-      <obj_property name="ElementShortName">tx_end_s</obj_property>
-      <obj_property name="ObjectShortName">tx_end_s</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/o_data_parallel_s">
-      <obj_property name="ElementShortName">o_data_parallel_s[15:0]</obj_property>
-      <obj_property name="ObjectShortName">o_data_parallel_s[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/i_data_parallel_s">
-      <obj_property name="ElementShortName">i_data_parallel_s[15:0]</obj_property>
-      <obj_property name="ObjectShortName">i_data_parallel_s[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/master_data_received">
-      <obj_property name="ElementShortName">master_data_received[15:0]</obj_property>
-      <obj_property name="ObjectShortName">master_data_received[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/slave_data_sent">
-      <obj_property name="ElementShortName">slave_data_sent[15:0]</obj_property>
-      <obj_property name="ObjectShortName">slave_data_sent[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/i_data_values">
-      <obj_property name="ElementShortName">i_data_values[1:8][15:0]</obj_property>
-      <obj_property name="ObjectShortName">i_data_values[1:8][15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/o_data_values">
-      <obj_property name="ElementShortName">o_data_values[1:8][15:0]</obj_property>
-      <obj_property name="ObjectShortName">o_data_values[1:8][15:0]</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/tb_spi_controller/DUT/r_st_present">
-      <obj_property name="ElementShortName">r_st_present</obj_property>
-      <obj_property name="ObjectShortName">r_st_present</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/tb_spi_controller/DUT/w_st_next">
-      <obj_property name="ElementShortName">w_st_next</obj_property>
-      <obj_property name="ObjectShortName">w_st_next</obj_property>
+   <wvobject type="other" fp_name="/tb_spi_controller/spi_fsm/next_state">
+      <obj_property name="ElementShortName">next_state</obj_property>
+      <obj_property name="ObjectShortName">next_state</obj_property>
    </wvobject>
 </wave_config>

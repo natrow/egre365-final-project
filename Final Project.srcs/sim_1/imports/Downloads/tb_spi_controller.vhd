@@ -88,13 +88,36 @@ signal tx_end_s          : std_logic;
 signal o_data_parallel_s : STD_LOGIC_VECTOR(15 downto 0);
 signal i_data_parallel_s : STD_LOGIC_VECTOR(15 downto 0);
 
+signal slave_data_sent : STD_LOGIC_VECTOR(N-1 downto 0);
 
-signal master_data_received : std_logic_vector(N-1 downto 0);  -- data sent by the master and received by the slave
-signal slave_data_sent      : std_logic_vector(N-1 downto 0);  -- data sent by the slave and received by the master
+signal start_clk : STD_LOGIC := '0';
+signal xaxis_data : STD_LOGIC_VECTOR(15 downto 0);
+signal yaxis_data : STD_LOGIC_VECTOR(15 downto 0);
+signal zaxis_data : STD_LOGIC_VECTOR(15 downto 0);
 
- 
 begin
+spi_fsm : ENTITY work.spi_fsm(simple)
+	port map(
+		i_clk           => sys_clk_sig,
+        i_rstb          => cpu_resetn_sig,
+        i_start         => start_clk,
+        o_tx_start      => tx_start_s,
+        o_data_parallel => i_data_parallel_s,
+        i_tx_end        => tx_end_s,
+        i_data_parallel => o_data_parallel_s,
+        o_xaxis_data    => xaxis_data,
+        o_yaxis_data    => yaxis_data,
+        o_zaxis_data    => zaxis_data
+	);
 
+clock_divider : ENTITY work.clock_divider(behavior)
+	generic map(
+		divisor => 200000
+	)
+	port map(
+		mclk => sys_clk_sig,
+		sclk => start_clk
+	);
 
 DUT : spi_controller
   generic map(
@@ -111,193 +134,10 @@ DUT : spi_controller
 	o_ss                        => cs_sig,
 	o_mosi                      => mosi_sig,
 	i_miso                      => miso_sig);
-			  
 
 -- master clock and reset signals
 
 sys_clk_sig <= not sys_clk_sig after 5 ns;
-
-
--- This process simulates a "control state machine" which instructs
--- the SPI core to send out the required 8 transaction requests to the
--- AD345 chip to get the acceleration data in the X, Y, and Z axes
-
-master_stimulus : process
-begin
-
-	i_data_parallel_s <= i_data_values(send_data_index);    -- set 1st data on i_data_parallel - see point (1) on slides
-	  		
-	waitclocks(sys_clk_sig, 10);							-- activate reset - see point (2) on slides
-	cpu_resetn_sig  <= '0';
-	waitclocks(sys_clk_sig, 10);
-	cpu_resetn_sig  <= '1';
-
-	tx_start_s <= '1';										-- start 1st transaction - see point (3) on slides
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 1st transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 1st transaction - see point (4) on slides
-	send_data_index <= send_data_index + 1;					-- increment to next value - see point (5) on slides
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);    -- set next data on i_data_parallel - see point (6) on slides
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 2nd transaction -- see point (7) on slides
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 2nd transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 2nd transaction - see point (8) on slides
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 3rd transaction - see point (9) on slides
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 3rd transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 3rd transaction - see point (10) on slides
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 4th transaction - see point (11) on slides
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 4th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 4th transaction -- see point (12) on slides
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 5th transaction - see point (13) on slides
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 5th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 5th transaction - see point (14) on slides
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 6th transaction - see point (15) on slides
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 6th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 6th transaction - see point (16) on slides
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 7th transaction - see point (17) on slides
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 7th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 7th transaction - see point (18) on slides
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 8th transaction - see point (19) on slides
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 8th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 8th transaction - see point (20) on slides
-	
-															------------------------------------------------------------------
-
-	waitclocks(sys_clk_sig, 20000);							-- wait a "long time" to start a 2nd set of transactions - see point (21) on slides
-	send_data_index <= 1;		    						-- restart at the beginning
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-	
-	tx_start_s <= '1';										-- start 1st transaction
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 1st transaction started
-
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 1st transaction
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 2nd transaction
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 2nd transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 2nd transaction
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 3rd transaction
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 3rd transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 3rd transaction
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 4th transaction
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 4th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 4th transaction
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 5th transaction
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 5th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 5th transaction
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 6th transaction
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 6th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 6th transaction
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 7th transaction
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 7th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 7th transaction
-	send_data_index <= send_data_index + 1;					-- increment to next value
-	waitclocks(sys_clk_sig, 1);
-	i_data_parallel_s <= i_data_values(send_data_index);
-	waitclocks(sys_clk_sig, 4);
-
-	tx_start_s <= '1';										-- start 8th transaction
-	waitclocks(sys_clk_sig, 2);
-	tx_start_s <= '0';										-- 8th transaction started
-
-	wait until tx_end_s'event and tx_end_s='1';				-- wait until SPI controller signals done with 8th transaction
-
-
-    wait; 													-- stop the process to avoid an infinite loop
-
-end process master_stimulus;
-
 
 -- Simulation of an SPI slave replying to the master
 -- slave places proper vector from o_data_values onto miso_sig
@@ -334,37 +174,5 @@ begin
 		end if;
 	end if;
 end process spi_slave_sim;
-
--- this process monitors the SPI master to ensure that its sending out
--- the proper values on mosi_sig on the rising edge of sck_sig
-
-spi_master_monitor : process(sck_sig, cpu_resetn_sig)
-  begin
-	if(cpu_resetn_sig='0') then
-		i_data_index      <= 1;			-- initialize to first input vector
-		master_data_received   <= std_logic_vector(to_unsigned(16#00#,N));
-		count_rise  <= 0;
-    else
-		if(rising_edge(sck_sig)) then
-			if(cs_sig='0' and count_rise < 16) then
-				master_data_received   <= master_data_received(N-2 downto 0)&mosi_sig;
-				count_rise     <= count_rise+1;
-		    elsif(cs_sig='0' and count_rise = 16) then
-			   assert master_data_received(14 downto 0) = i_data_values(i_data_index)(14 downto 0)
-               report "ERROR - incorrect value on master_data_received"
-               severity error;
-               count_rise <= 1;
-               master_data_received   <= std_logic_vector(to_unsigned(16#00#,N));
-               if(i_data_index < NO_VECTORS) then
-                 i_data_index <= i_data_index+1;                 -- point to next vector
-               else
-                 i_data_index <= 1;                              -- point to first vector
-               end if;
-			else
-				count_rise     <= 1;
-			end if;
-		end if;
-	end if;
-end process spi_master_monitor;
 
 end rtl;
