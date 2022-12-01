@@ -30,24 +30,6 @@ procedure waitclocks(signal clock : std_logic;
 		end loop;
 end waitclocks;
 
-
-component spi_controller
-generic(
-	N                     : integer := 8;      -- number of bit to serialize
-	CLK_DIV               : integer := 100 );  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(2*CLK_DIV)
- port (
-	i_clk                       : in  std_logic;
-	i_rstb                      : in  std_logic;
-	i_tx_start                  : in  std_logic;  -- start TX on serial line
-	o_tx_end                    : out std_logic;  -- TX data completed; o_data_parallel available
-	i_data_parallel             : in  std_logic_vector(N-1 downto 0);  -- data to send
-	o_data_parallel             : out std_logic_vector(N-1 downto 0);  -- received data
-	o_sclk                      : out std_logic;
-	o_ss                        : out std_logic;
-	o_mosi                      : out std_logic;
-	i_miso                      : in  std_logic);
-end component;
-
 constant N          : integer := 16;   -- number of bits send per SPI transaction
 constant NO_VECTORS : integer := 8;    -- number of SPI transactions to simulate
 constant CLK_DIV    : integer := 100;  -- input clock divider to generate output serial clock; o_sclk frequency = i_clk/(2*CLK_DIV)
@@ -91,49 +73,21 @@ signal i_data_parallel_s : STD_LOGIC_VECTOR(15 downto 0);
 signal slave_data_sent : STD_LOGIC_VECTOR(N-1 downto 0);
 
 signal start_clk : STD_LOGIC := '0';
-signal xaxis_data : STD_LOGIC_VECTOR(15 downto 0);
-signal yaxis_data : STD_LOGIC_VECTOR(15 downto 0);
-signal zaxis_data : STD_LOGIC_VECTOR(15 downto 0);
+signal led_data_sig : STD_LOGIC_VECTOR(15 downto 0);
+signal sw_sig : STD_LOGIC_VECTOR(15 downto 0) := "0000000000000000";
 
 begin
-spi_fsm : ENTITY work.spi_fsm(simple)
+DUT : ENTITY work.spi_fsm_toplevel(Structural)
 	port map(
-		i_clk           => sys_clk_sig,
-        i_rstb          => cpu_resetn_sig,
-        i_start         => start_clk,
-        o_tx_start      => tx_start_s,
-        o_data_parallel => i_data_parallel_s,
-        i_tx_end        => tx_end_s,
-        i_data_parallel => o_data_parallel_s,
-        o_xaxis_data    => xaxis_data,
-        o_yaxis_data    => yaxis_data,
-        o_zaxis_data    => zaxis_data
+		CPU_RESETN => cpu_resetn_sig,
+		SYS_CLK => sys_clk_sig,
+		LED => led_data_sig,
+		SW => sw_sig,
+		SCK => sck_sig,
+		CS => cs_sig,
+		MOSI => mosi_sig,
+		MISO => miso_sig
 	);
-
-clock_divider : ENTITY work.clock_divider(behavior)
-	generic map(
-		divisor => 200000
-	)
-	port map(
-		mclk => sys_clk_sig,
-		sclk => start_clk
-	);
-
-DUT : spi_controller
-  generic map(
-	N                     => N,
-	CLK_DIV               => CLK_DIV)
-  port map(
-	i_clk                       => sys_clk_sig,
-	i_rstb                      => cpu_resetn_sig,
-	i_tx_start                  => tx_start_s,
-	o_tx_end                    => tx_end_s,
-	i_data_parallel             => i_data_parallel_s,
-	o_data_parallel             => o_data_parallel_s,
-	o_sclk                      => sck_sig,
-	o_ss                        => cs_sig,
-	o_mosi                      => mosi_sig,
-	i_miso                      => miso_sig);
 
 -- master clock and reset signals
 

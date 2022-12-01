@@ -224,22 +224,22 @@ begin
                     o_data_parallel <= x"2D08";
                 -- read x lower
                 when rxl0 | rxl1 | rxl2 | rxl3 =>
-                    o_data_parallel <= x"0032";
+                    o_data_parallel <= x"B201";
                 -- read x higher
                 when rxh0 | rxh1 | rxh2 | rxh3 =>
-                    o_data_parallel <= x"0033";
+                    o_data_parallel <= x"B302";
                 -- read y lower
                 when ryl0 | ryl1 | ryl2 | ryl3 =>
-                    o_data_parallel <= x"0034";
+                    o_data_parallel <= x"B403";
                 -- read y higher
                 when ryh0 | ryh1 | ryh2 | ryh3 =>
-                    o_data_parallel <= x"0035";
+                    o_data_parallel <= x"B504";
                 -- read z lower
                 when rzl0 | rzl1 | rzl2 | rzl3 =>
-                    o_data_parallel <= x"0036";
+                    o_data_parallel <= x"B605";
                 -- read z higher
                 when rzh0 | rzh1 | rzh2 | rzh3 =>
-                    o_data_parallel <= x"0037";  
+                    o_data_parallel <= x"B706";  
                 when others =>
                     o_data_parallel <= x"0000";
             end case;

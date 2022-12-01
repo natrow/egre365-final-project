@@ -10,61 +10,65 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2669025000fs"></ZoomStartTime>
-      <ZoomEndTime time="4266195001fs"></ZoomEndTime>
-      <Cursor1Time time="4000000000fs"></Cursor1Time>
+      <ZoomStartTime time="58960777816fs"></ZoomStartTime>
+      <ZoomEndTime time="59278318437fs"></ZoomEndTime>
+      <Cursor1Time time="59225395000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="172"></NameColumnWidth>
-      <ValueColumnWidth column_width="78"></ValueColumnWidth>
+      <ValueColumnWidth column_width="70"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="12" />
-   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/i_clk">
+   <WVObjectSize size="13" />
+   <wvobject type="logic" fp_name="/tb_spi_controller/DUT/spi_fsm/i_clk">
       <obj_property name="ElementShortName">i_clk</obj_property>
       <obj_property name="ObjectShortName">i_clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/i_rstb">
+   <wvobject type="logic" fp_name="/tb_spi_controller/DUT/spi_fsm/i_rstb">
       <obj_property name="ElementShortName">i_rstb</obj_property>
       <obj_property name="ObjectShortName">i_rstb</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/i_start">
+   <wvobject type="logic" fp_name="/tb_spi_controller/DUT/spi_fsm/i_start">
       <obj_property name="ElementShortName">i_start</obj_property>
       <obj_property name="ObjectShortName">i_start</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/o_tx_start">
+   <wvobject type="logic" fp_name="/tb_spi_controller/DUT/spi_fsm/o_tx_start">
       <obj_property name="ElementShortName">o_tx_start</obj_property>
       <obj_property name="ObjectShortName">o_tx_start</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/o_data_parallel">
+   <wvobject type="array" fp_name="/tb_spi_controller/DUT/spi_fsm/o_data_parallel">
       <obj_property name="ElementShortName">o_data_parallel[15:0]</obj_property>
       <obj_property name="ObjectShortName">o_data_parallel[15:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_spi_controller/spi_fsm/i_tx_end">
+   <wvobject type="logic" fp_name="/tb_spi_controller/DUT/spi_fsm/i_tx_end">
       <obj_property name="ElementShortName">i_tx_end</obj_property>
       <obj_property name="ObjectShortName">i_tx_end</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/i_data_parallel">
+   <wvobject type="array" fp_name="/tb_spi_controller/DUT/spi_fsm/i_data_parallel">
       <obj_property name="ElementShortName">i_data_parallel[15:0]</obj_property>
       <obj_property name="ObjectShortName">i_data_parallel[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/o_xaxis_data">
+   <wvobject type="array" fp_name="/tb_spi_controller/DUT/spi_fsm/o_xaxis_data">
       <obj_property name="ElementShortName">o_xaxis_data[15:0]</obj_property>
       <obj_property name="ObjectShortName">o_xaxis_data[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/o_yaxis_data">
+   <wvobject type="array" fp_name="/tb_spi_controller/DUT/spi_fsm/o_yaxis_data">
       <obj_property name="ElementShortName">o_yaxis_data[15:0]</obj_property>
       <obj_property name="ObjectShortName">o_yaxis_data[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_spi_controller/spi_fsm/o_zaxis_data">
+   <wvobject type="array" fp_name="/tb_spi_controller/DUT/spi_fsm/o_zaxis_data">
       <obj_property name="ElementShortName">o_zaxis_data[15:0]</obj_property>
       <obj_property name="ObjectShortName">o_zaxis_data[15:0]</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/tb_spi_controller/spi_fsm/present_state">
+   <wvobject type="other" fp_name="/tb_spi_controller/DUT/spi_fsm/present_state">
       <obj_property name="ElementShortName">present_state</obj_property>
       <obj_property name="ObjectShortName">present_state</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/tb_spi_controller/spi_fsm/next_state">
+   <wvobject type="other" fp_name="/tb_spi_controller/DUT/spi_fsm/next_state">
       <obj_property name="ElementShortName">next_state</obj_property>
       <obj_property name="ObjectShortName">next_state</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_spi_controller/DUT/spi_controller/r_rx_data">
+      <obj_property name="ElementShortName">r_rx_data[15:0]</obj_property>
+      <obj_property name="ObjectShortName">r_rx_data[15:0]</obj_property>
    </wvobject>
 </wave_config>
