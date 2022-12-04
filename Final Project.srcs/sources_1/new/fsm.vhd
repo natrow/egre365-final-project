@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.ALL;
 
-entity spi_fsm is
+entity fsm is
     Port (
         i_clk           : in  std_logic;
         i_rstb          : in  std_logic;
@@ -14,9 +14,9 @@ entity spi_fsm is
         o_yaxis_data    : out std_logic_vector(15 downto 0);
         o_zaxis_data    : out std_logic_vector(15 downto 0)
     );
-end spi_fsm;
+end fsm;
 
-architecture simple of spi_fsm is
+architecture simple of fsm is
     TYPE state_type IS (
         init, -- initial/reset state
         wbr0, wbr1, wbr2, wbr3, -- write baud rate

@@ -45,7 +45,7 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="19"/>
+    <Option Name="WTXSimLaunchSim" Val="21"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -74,39 +74,34 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/imports/lab7 resources/clock_divider.vhd">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Lab 7/Lab 7.srcs/sources_1/imports/lab7 resources/clock_divider.vhd"/>
-          <Attr Name="ImportTime" Val="1668724190"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/imports/Downloads/spi_controller.vhd">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../home/nathan/Downloads/spi_controller.vhd"/>
-          <Attr Name="ImportTime" Val="1668115348"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/spi_fsm.vhd">
+      <File Path="$PSRCDIR/sources_1/new/clock_divider.vhd">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/Downloads/spi_fsm_toplevel.vhd">
+      <File Path="$PSRCDIR/sources_1/new/fsm.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../Final Project - Phase II/Final_Project_Phase_2.srcs/sources_1/imports/Downloads/spi_fsm_toplevel.vhd"/>
-          <Attr Name="ImportTime" Val="1669843182"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/spi_controller.vhd">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/toplevel.vhd">
+        <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="spi_fsm_toplevel"/>
+        <Option Name="TopModule" Val="toplevel"/>
+        <Option Name="TopAutoSet" Val="TRUE"/>
       </Config>
     </FileSet>
     <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
@@ -125,10 +120,8 @@
     </FileSet>
     <FileSet Name="sim_1" Type="SimulationSrcs" RelSrcDir="$PSRCDIR/sim_1" RelGenDir="$PGENDIR/sim_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sim_1/imports/Downloads/tb_spi_controller.vhd">
+      <File Path="$PSRCDIR/sim_1/new/testbench.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../home/nathan/Downloads/tb_spi_controller.vhd"/>
-          <Attr Name="ImportTime" Val="1668115360"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -140,7 +133,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="tb_spi_controller"/>
+        <Option Name="TopModule" Val="testbench"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TopAutoSet" Val="TRUE"/>
         <Option Name="TransportPathDelay" Val="0"/>

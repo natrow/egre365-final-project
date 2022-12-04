@@ -1,23 +1,11 @@
-
--- ******************************************************************** 
---
--- Fle Name: tb_spi_controller.vhd
--- 
--- scope: test bench for spi_controller.vjd
---
--- rev 1.00.2019.10.26.2019
--- 
--- ******************************************************************** 
--- ******************************************************************** 
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity tb_spi_controller is
-end tb_spi_controller;
+entity testbench is
+end testbench;
 
-architecture rtl of tb_spi_controller is
+architecture rtl of testbench is
 
 -- This procedure waits for N number of falling edges on the specified
 -- clock signal
@@ -77,7 +65,7 @@ signal led_data_sig : STD_LOGIC_VECTOR(15 downto 0);
 signal sw_sig : STD_LOGIC_VECTOR(15 downto 0) := "0000000000000000";
 
 begin
-DUT : ENTITY work.spi_fsm_toplevel(Structural)
+DUT : ENTITY work.toplevel(Structural)
 	port map(
 		CPU_RESETN => cpu_resetn_sig,
 		SYS_CLK => sys_clk_sig,
