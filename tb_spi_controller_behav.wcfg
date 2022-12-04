@@ -11,14 +11,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="4000000001fs"></ZoomEndTime>
-      <Cursor1Time time="4000000000fs"></Cursor1Time>
+      <ZoomEndTime time="16000000001fs"></ZoomEndTime>
+      <Cursor1Time time="16000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="172"></NameColumnWidth>
-      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+      <ValueColumnWidth column_width="62"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="18" />
+   <WVObjectSize size="16" />
    <wvobject type="logic" fp_name="/testbench/DUT/CPU_RESETN">
       <obj_property name="ElementShortName">CPU_RESETN</obj_property>
       <obj_property name="ObjectShortName">CPU_RESETN</obj_property>
@@ -26,10 +26,6 @@
    <wvobject type="logic" fp_name="/testbench/DUT/SYS_CLK">
       <obj_property name="ElementShortName">SYS_CLK</obj_property>
       <obj_property name="ObjectShortName">SYS_CLK</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/LED">
-      <obj_property name="ElementShortName">LED[15:0]</obj_property>
-      <obj_property name="ObjectShortName">LED[15:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/testbench/DUT/SW">
       <obj_property name="ElementShortName">SW[15:0]</obj_property>
@@ -71,24 +67,20 @@
       <obj_property name="ElementShortName">slave_data_parallel_sig[15:0]</obj_property>
       <obj_property name="ObjectShortName">slave_data_parallel_sig[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/o_x_axis_data_sig">
-      <obj_property name="ElementShortName">o_x_axis_data_sig[15:0]</obj_property>
-      <obj_property name="ObjectShortName">o_x_axis_data_sig[15:0]</obj_property>
+   <wvobject type="array" fp_name="/testbench/DUT/x_axis_data_sig">
+      <obj_property name="ElementShortName">x_axis_data_sig[15:0]</obj_property>
+      <obj_property name="ObjectShortName">x_axis_data_sig[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/o_y_axis_data_sig">
-      <obj_property name="ElementShortName">o_y_axis_data_sig[15:0]</obj_property>
-      <obj_property name="ObjectShortName">o_y_axis_data_sig[15:0]</obj_property>
+   <wvobject type="array" fp_name="/testbench/DUT/y_axis_data_sig">
+      <obj_property name="ElementShortName">y_axis_data_sig[15:0]</obj_property>
+      <obj_property name="ObjectShortName">y_axis_data_sig[15:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/o_z_axis_data_sig">
-      <obj_property name="ElementShortName">o_z_axis_data_sig[15:0]</obj_property>
-      <obj_property name="ObjectShortName">o_z_axis_data_sig[15:0]</obj_property>
+   <wvobject type="array" fp_name="/testbench/DUT/z_axis_data_sig">
+      <obj_property name="ElementShortName">z_axis_data_sig[15:0]</obj_property>
+      <obj_property name="ObjectShortName">z_axis_data_sig[15:0]</obj_property>
    </wvobject>
-   <wvobject type="other" fp_name="/testbench/DUT/N">
-      <obj_property name="ElementShortName">N</obj_property>
-      <obj_property name="ObjectShortName">N</obj_property>
-   </wvobject>
-   <wvobject type="other" fp_name="/testbench/DUT/CLK_DIV">
-      <obj_property name="ElementShortName">CLK_DIV</obj_property>
-      <obj_property name="ObjectShortName">CLK_DIV</obj_property>
+   <wvobject type="array" fp_name="/testbench/DUT/LED">
+      <obj_property name="ElementShortName">LED[15:0]</obj_property>
+      <obj_property name="ObjectShortName">LED[15:0]</obj_property>
    </wvobject>
 </wave_config>
