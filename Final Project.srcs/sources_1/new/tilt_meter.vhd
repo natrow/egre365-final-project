@@ -15,34 +15,34 @@ entity tilt_meter is
 end tilt_meter;
 
 architecture simple of tilt_meter is
-    signal delta_left_sig, delta_right_sig, current_sig, center_sig,
-        lt1, lt2, lt3, lt4, lt5, lt6, lt7,
-        rt1, rt2, rt3, rt4, rt5, rt6, rt7 : signed(15 downto 0);
 begin
     output : process(center, left, right, current)
+        variable delta_left_sig, delta_right_sig, current_sig, center_sig,
+            lt1, lt2, lt3, lt4, lt5, lt6, lt7,
+            rt1, rt2, rt3, rt4, rt5, rt6, rt7 : signed(15 downto 0);
     begin
-        delta_left_sig <= (signed(left) - signed(center))/to_signed(7, 16);
-        delta_right_sig <= (signed(right) - signed(center))/to_signed(7, 16);
+        delta_left_sig := (signed(left) - signed(center))/to_signed(7, 16);
+        delta_right_sig := (signed(right) - signed(center))/to_signed(7, 16);
         delta_left <= std_logic_vector(delta_left_sig);
         delta_right <= std_logic_vector(delta_right_sig);
-        current_sig <= signed(current);
-        center_sig <= signed(center);
+        current_sig := signed(current);
+        center_sig := signed(center);
 
-        lt1 <= center_sig + delta_left_sig;
-        lt2 <= resize(center_sig + (delta_left_sig * to_signed(2, 16)), 16);
-        lt3 <= resize(center_sig + (delta_left_sig * to_signed(3, 16)), 16);
-        lt4 <= resize(center_sig + (delta_left_sig * to_signed(4, 16)), 16);
-        lt5 <= resize(center_sig + (delta_left_sig * to_signed(5, 16)), 16);
-        lt6 <= resize(center_sig + (delta_left_sig * to_signed(6, 16)), 16);
-        lt7 <= resize(center_sig + (delta_left_sig * to_signed(7, 16)), 16);
+        lt1 := center_sig + delta_left_sig;
+        lt2 := resize(center_sig + (delta_left_sig * to_signed(2, 16)), 16);
+        lt3 := resize(center_sig + (delta_left_sig * to_signed(3, 16)), 16);
+        lt4 := resize(center_sig + (delta_left_sig * to_signed(4, 16)), 16);
+        lt5 := resize(center_sig + (delta_left_sig * to_signed(5, 16)), 16);
+        lt6 := resize(center_sig + (delta_left_sig * to_signed(6, 16)), 16);
+        lt7 := resize(center_sig + (delta_left_sig * to_signed(7, 16)), 16);
 
-        rt1 <= center_sig + delta_right_sig;
-        rt2 <= resize(center_sig + (delta_right_sig * to_signed(2, 16)), 16);
-        rt3 <= resize(center_sig + (delta_right_sig * to_signed(3, 16)), 16);
-        rt4 <= resize(center_sig + (delta_right_sig * to_signed(4, 16)), 16);
-        rt5 <= resize(center_sig + (delta_right_sig * to_signed(5, 16)), 16);
-        rt6 <= resize(center_sig + (delta_right_sig * to_signed(6, 16)), 16);
-        rt7 <= resize(center_sig + (delta_right_sig * to_signed(7, 16)), 16);
+        rt1 := center_sig + delta_right_sig;
+        rt2 := resize(center_sig + (delta_right_sig * to_signed(2, 16)), 16);
+        rt3 := resize(center_sig + (delta_right_sig * to_signed(3, 16)), 16);
+        rt4 := resize(center_sig + (delta_right_sig * to_signed(4, 16)), 16);
+        rt5 := resize(center_sig + (delta_right_sig * to_signed(5, 16)), 16);
+        rt6 := resize(center_sig + (delta_right_sig * to_signed(6, 16)), 16);
+        rt7 := resize(center_sig + (delta_right_sig * to_signed(7, 16)), 16);
 
         -- y(15)
         y(15) <= '0';

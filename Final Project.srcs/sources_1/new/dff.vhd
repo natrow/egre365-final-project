@@ -19,9 +19,11 @@ begin
     output : process(clk, reset)
     begin
         if(reset = '0') then
-            y <= "0000000000000000";
-        elsif(rising_edge(clk) and en = '1') then
-            y <= d;
+            y <= x"0000";
+        elsif(rising_edge(clk)) then
+            if(en = '1') then
+                y <= d;
+            end if;
         end if;
     end process;
 end architecture;
