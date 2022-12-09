@@ -1,5 +1,5 @@
 library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.std_logic_1164.ALL;
 
 entity multiplexer is
     generic(
@@ -29,7 +29,13 @@ end multiplexer;
 
 architecture simple of multiplexer is
 begin
-    output : process(f0000, f0001, f0010, f0011, s)
+    output : process(
+        f0000, f0001, f0010, f0011,
+        f0100, f0101, f0110, f0111,
+        f1000, f1001, f1010, f1011,
+        f1100, f1101, f1110, f1111,
+        s
+    )
     begin
         case s is
             when "0000" =>

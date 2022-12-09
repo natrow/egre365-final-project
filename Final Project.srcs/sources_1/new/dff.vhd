@@ -15,14 +15,13 @@ entity dff is
 end dff;
 
 architecture simple of dff is
-    signal stored : std_logic_vector(N-1 downto 0);
 begin
     output : process(clk, reset)
     begin
         if(reset = '0') then
-            stored <= "0000000000000000";
+            y <= "0000000000000000";
         elsif(rising_edge(clk) and en = '1') then
-            stored <= d;
+            y <= d;
         end if;
     end process;
 end architecture;
