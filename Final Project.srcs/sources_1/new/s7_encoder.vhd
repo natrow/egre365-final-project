@@ -8,13 +8,13 @@ entity s7_encoder is
         neg_in : in std_logic;
         blank_out : out std_logic;
         neg_out : out std_logic;
-		a : out std_logic;
-		b : out std_logic;
-		c : out std_logic;
-		d : out std_logic;
-		e : out std_logic;
-		f : out std_logic;
-		g : out std_logic
+        a : out std_logic;
+        b : out std_logic;
+        c : out std_logic;
+        d : out std_logic;
+        e : out std_logic;
+        f : out std_logic;
+        g : out std_logic
     );
 end s7_encoder;
 
