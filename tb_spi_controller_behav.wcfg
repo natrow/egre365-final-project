@@ -12,75 +12,51 @@
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
       <ZoomEndTime time="16000000001fs"></ZoomEndTime>
-      <Cursor1Time time="16000000000fs"></Cursor1Time>
+      <Cursor1Time time="15987272728fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="172"></NameColumnWidth>
-      <ValueColumnWidth column_width="62"></ValueColumnWidth>
+      <NameColumnWidth column_width="123"></NameColumnWidth>
+      <ValueColumnWidth column_width="104"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="16" />
-   <wvobject type="logic" fp_name="/testbench/DUT/CPU_RESETN">
-      <obj_property name="ElementShortName">CPU_RESETN</obj_property>
-      <obj_property name="ObjectShortName">CPU_RESETN</obj_property>
+   <WVObjectSize size="8" />
+   <wvobject fp_name="/testbench/DUT/center" type="array">
+      <obj_property name="ElementShortName">center[15:0]</obj_property>
+      <obj_property name="ObjectShortName">center[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/testbench/DUT/SYS_CLK">
-      <obj_property name="ElementShortName">SYS_CLK</obj_property>
-      <obj_property name="ObjectShortName">SYS_CLK</obj_property>
+   <wvobject fp_name="/testbench/DUT/left" type="array">
+      <obj_property name="ElementShortName">left[15:0]</obj_property>
+      <obj_property name="ObjectShortName">left[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/SW">
-      <obj_property name="ElementShortName">SW[15:0]</obj_property>
-      <obj_property name="ObjectShortName">SW[15:0]</obj_property>
+   <wvobject fp_name="/testbench/DUT/right" type="array">
+      <obj_property name="ElementShortName">right[15:0]</obj_property>
+      <obj_property name="ObjectShortName">right[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/testbench/DUT/SCK">
-      <obj_property name="ElementShortName">SCK</obj_property>
-      <obj_property name="ObjectShortName">SCK</obj_property>
+   <wvobject fp_name="/testbench/DUT/current" type="array">
+      <obj_property name="ElementShortName">current[15:0]</obj_property>
+      <obj_property name="ObjectShortName">current[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/testbench/DUT/CS">
-      <obj_property name="ElementShortName">CS</obj_property>
-      <obj_property name="ObjectShortName">CS</obj_property>
+   <wvobject fp_name="/testbench/DUT/delta_left" type="array">
+      <obj_property name="ElementShortName">delta_left[15:0]</obj_property>
+      <obj_property name="ObjectShortName">delta_left[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/testbench/DUT/MOSI">
-      <obj_property name="ElementShortName">MOSI</obj_property>
-      <obj_property name="ObjectShortName">MOSI</obj_property>
+   <wvobject fp_name="/testbench/DUT/delta_right" type="array">
+      <obj_property name="ElementShortName">delta_right[15:0]</obj_property>
+      <obj_property name="ObjectShortName">delta_right[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/testbench/DUT/MISO">
-      <obj_property name="ElementShortName">MISO</obj_property>
-      <obj_property name="ObjectShortName">MISO</obj_property>
+   <wvobject fp_name="/testbench/DUT/y" type="array">
+      <obj_property name="ElementShortName">y[15:0]</obj_property>
+      <obj_property name="ObjectShortName">y[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/testbench/DUT/START_sig">
-      <obj_property name="ElementShortName">START_sig</obj_property>
-      <obj_property name="ObjectShortName">START_sig</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench/DUT/tx_start_sig">
-      <obj_property name="ElementShortName">tx_start_sig</obj_property>
-      <obj_property name="ObjectShortName">tx_start_sig</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench/DUT/tx_end_sig">
-      <obj_property name="ElementShortName">tx_end_sig</obj_property>
-      <obj_property name="ObjectShortName">tx_end_sig</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/master_data_parallel_sig">
-      <obj_property name="ElementShortName">master_data_parallel_sig[15:0]</obj_property>
-      <obj_property name="ObjectShortName">master_data_parallel_sig[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/slave_data_parallel_sig">
-      <obj_property name="ElementShortName">slave_data_parallel_sig[15:0]</obj_property>
-      <obj_property name="ObjectShortName">slave_data_parallel_sig[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/x_axis_data_sig">
-      <obj_property name="ElementShortName">x_axis_data_sig[15:0]</obj_property>
-      <obj_property name="ObjectShortName">x_axis_data_sig[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/y_axis_data_sig">
-      <obj_property name="ElementShortName">y_axis_data_sig[15:0]</obj_property>
-      <obj_property name="ObjectShortName">y_axis_data_sig[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/z_axis_data_sig">
-      <obj_property name="ElementShortName">z_axis_data_sig[15:0]</obj_property>
-      <obj_property name="ObjectShortName">z_axis_data_sig[15:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/testbench/DUT/LED">
-      <obj_property name="ElementShortName">LED[15:0]</obj_property>
-      <obj_property name="ObjectShortName">LED[15:0]</obj_property>
+   <wvobject fp_name="/testbench/DUT/y_7s" type="array">
+      <obj_property name="ElementShortName">y_7s[15:0]</obj_property>
+      <obj_property name="ObjectShortName">y_7s[15:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
 </wave_config>
